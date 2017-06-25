@@ -1420,7 +1420,7 @@ Recovering from Bad Configurations
   configuration with 'make' is not enough.
 
 DOCUMENTATION
-^^^^^^^^^^^^^
+-------------
 
 Additional information can be found in the Documentation/ directory and
 also in README files that are scattered throughout the source tree.  The
@@ -1432,7 +1432,7 @@ into your Web browser:
 NuttX documentation is also available online at http://www.nuttx.org.
 
 Below is a guide to the available README files in the NuttX source tree:
-
+```
 nuttx/
  |
  |- arch/
@@ -1796,10 +1796,10 @@ nuttx/
  |   `- README.txt
  `- tools/
      `- README.txt
-
+```
 Below is a guide to the available README files in the semi-optional apps/
 source tree:
-
+```
 apps/
  |- examples/
  |   |- bastest/README.txt
@@ -1851,7 +1851,7 @@ apps/
  |   `- zmodem
  |      `- README.txt
  `- README.txt
-
+```
 Additional README.txt files in the other, related repositories:
 
 NxWidgets/
