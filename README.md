@@ -1,4 +1,4 @@
-## README
+# README
 
   - Environments
   - Installation
@@ -28,20 +28,20 @@
     - Build Targets and Options
   - Documentation
 
-## ENVIRONMENTS
+# ENVIRONMENTS
 
   NuttX requires a POSIX development environment such as you would find under
   Linux or OSX. 
 
 
-## INSTALLATION
+# INSTALLATION
 
   There are two ways to get NuttX:  You may download released, stable
   tarballs from wither the Bitbucket or Sourceforge download locations.
   Or you may get NuttX by cloning the Bitbucket GIT repositories.  Let's
   consider the released tarballs first:
 
-# Download and Unpack
+## Download and Unpack
 
   Download and unpack the NuttX tarball.  If you are reading this, then
   you have probably already done that.  After unpacking, you will end
@@ -55,7 +55,7 @@
     https://bitbucket.org/nuttx/nuttx/downloads
     https://sourceforge.net/projects/nuttx/files/nuttx/
 
-# Semi-Optional apps/ Package
+## Semi-Optional apps/ Package
 
   All NuttX libraries and example code used to be in included within
   the NuttX source tree.  As of NuttX-6.0, this application code was
@@ -92,13 +92,13 @@
   can be changed by modifying your NuttX configuration file, but that
   is another story.
 
-# Installation Directories with Spaces in the Path
+## Installation Directories with Spaces in the Path
 
   In short: DON'T use spaces in path!
   The nuttx build directory should reside in a path that contains no
   spaces in any higher level directory name. 
 
-# Downloading from Repositories
+## Downloading from Repositories
 
   Cloning the Repository
 
@@ -148,7 +148,7 @@
 
       git config --global core.autocrlf false
 
-# Related Repositories
+## Related Repositories
 
   These are standalone repositories:
 
@@ -188,7 +188,7 @@
     Yes, this really is a Pascal compiler.  The Pascal p-code run-time and
     pcode debugger can be built as a part of NuttX.
 
-# Notes about Header Files
+## Notes about Header Files
 
   Other C-Library Header Files.
 
@@ -292,9 +292,9 @@
     exactly the same for the stdarg.h header file.
 
 
-## CONFIGURING NUTTX
+# CONFIGURING NUTTX
 
-# Instantiating "Canned" Configurations
+## Instantiating "Canned" Configurations
 
   "Canned" NuttX configuration files are retained in:
 
@@ -348,7 +348,7 @@
 
     See tools/README.txt for more information about these scripts.
 
-# Refreshing Configurations
+## Refreshing Configurations
 
   Configurations can get out of date.  As new configuration settings are
   added or removed or as dependencies between configuration settings
@@ -385,7 +385,7 @@
   the current Kconfig files, setting any new options to the default value.
   No questions asked.
 
-# NuttX Configuration Tool
+## NuttX Configuration Tool
 
   An automated tool has been incorported to support re-configuration
   of NuttX.  This automated tool is based on the kconfig-frontends
@@ -478,7 +478,7 @@
   These last to shortcuts are described further in the following
   paragraphs.
 
-# Finding Selections in the Configuration Menus
+## Finding Selections in the Configuration Menus
 
   The NuttX configuration options have gotten complex and it can be very
   difficult to find options in the menu trees if you are not sure where
@@ -493,7 +493,7 @@
   It will show you not only where to find the configuration item, but
   also all of the dependencies related to the configuration item.
 
-# Reveal Hidden Configuration Options
+## Reveal Hidden Configuration Options
 
   If you type 'Z', then kconfig-mconf will change what is displayed.
   Normally, only enabled features that have all of their dependencies met
@@ -509,7 +509,7 @@
   cannot be selected and has no value).  About all you do is to select
   the <Help> option to see what the dependencies are.
 
-# Make Sure that You on on the Right Platform
+## Make Sure that You on on the Right Platform
 
   Saved configurations may run on Linux, Cygwin (32- or 64-bit), or other
   platforms.  The platform characteristics can be changed use 'make
@@ -540,7 +540,7 @@
 
     $ tools/sethost.sh -h
 
-# Comparing Two Configurations
+## Comparing Two Configurations
   
   If you try to compare to configurations using 'diff', you will probably
   not be happy with the result.  There are superfluous things added to
@@ -580,7 +580,7 @@
      manual configurations to the current configurations based on the
      kconfig-frontends tools.  See the following paragraph.
 
-# Incompatibilities with Older Configurations
+## Incompatibilities with Older Configurations
 
   ***** WARNING *****
 
@@ -625,7 +625,7 @@
   damage your configuration (see
   http://www.nuttx.org/doku.php?id=wiki:howtos:convertconfig).
 
-# NuttX Configuration Tool under DOS
+## NuttX Configuration Tool under DOS
 
   Recent versions of NuttX support building NuttX from a native Windows
   console window (see "Native Windows Build" below).  But kconfig-frontends
@@ -674,9 +674,9 @@
           +   default "../apps"
 
 
-## TOOLCHAINS
+# TOOLCHAINS
 
-# Cross-Development Toolchains
+## Cross-Development Toolchains
 
   In order to build NuttX for your board, you will have to obtain a cross-
   compiler to generate code for your target CPU.  For each board,
@@ -687,7 +687,7 @@
   In any case, the PATH environment variable will need to be updated to
   include the loction where the build can find the toolchain binaries.
 
-# NuttX Buildroot Toolchain
+## NuttX Buildroot Toolchain
 
   For many configurations, a DIY set of tools is available for NuttX.  These
   tools can be downloaded from the NuttX Bitbucket.org file repository.  After
@@ -724,7 +724,7 @@
 
     make CROSSDEV=arm-nuttx-elf
 
-# SHELLS
+## SHELLS
 
   The NuttX build relies on some shell scripts.  Some are inline in the
   Makefiles and many are executable scripts in the tools/. directory.  The
@@ -754,9 +754,9 @@
      that will require modifications.
 
 
-## BUILDING NUTTX
+# BUILDING NUTTX
 
-# Building
+## Building
 
   NuttX builds in-place in the source tree.  You do not need to create
   any special build directories.  Assuming that your Make.defs is setup
@@ -771,7 +771,7 @@
   arguments on the make command.  Read ${TOPDIR}/configs/<board-name>/README.txt
   to see if that applies to your target.
 
-# Re-building
+## Re-building
 
   Re-building is normally simple -- just type make again.
 
@@ -809,7 +809,7 @@
   will be re-created when you do a normal 'make' and your edits will then be
   effective.
 
-# Build Targets and Options
+## Build Targets and Options
 
   Build Targets:
   Below is a summary of the build targets available in the top-level
@@ -897,7 +897,7 @@
     warnings (Contributed by Richard Cochran).
 
 
-## DOCUMENTATION
+# DOCUMENTATION
 
 Additional information can be found in the Documentation/ directory and
 also in README files that are scattered throughout the source tree.  The
