@@ -1,12 +1,11 @@
 ## README
----------
 
   This README file describes the port of NuttX to the SAMA5D2 Xplained Ulta
   development board. This board features the Atmel SAMA5D27 microprocessor.
   See http://www.atmel.com for further information.
 
+
 ## Contents
------------
 
   - STATUS
   - Loading Code into SRAM with J-Link
@@ -18,8 +17,8 @@
   - SAMA5D2-XULT Configuration Options
   - Configurations
 
+
 ## STATUS
----------
 
 1. Most of this document is a partially corrected clone of the SAMA5D4-EK
    README.txt and still contains errors and inconsistencies.
@@ -28,8 +27,8 @@
    is completely untested as of this writing (2015-09-15).  The primary
    issue is  that I have not yet determine how to load and test code.
 
+
 ## Loading Code into SRAM with J-Link
-------------------------------------
 
 REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
 
@@ -55,8 +54,8 @@ REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
     J-Link> setpc <address of __start>
     J-Link> ... start debugging ...
 
+
 ## Creating and Using DRAMBOOT
------------------------------
 
 REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
 
@@ -154,8 +153,8 @@ REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
    putting DRAMBOOT on a microSD card (as boot.bin).  The RomBOOT loader does
    boot that image without issue.
 
+
 ## Creating and Using AT25BOOT
------------------------------
 
 REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
 
@@ -248,8 +247,8 @@ REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
    not boot it!  I believe that is because the secure boot loader has some
    undocumented requirements that I am unaware of. (2014-6-28)
 
+
 ## Running NuttX from SDRAM
---------------------------
 
 REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
 
@@ -589,8 +588,8 @@ REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
   8. Set the PC to the NuttX entry point 'mon pc 0x20008040' and start
      nuttx using 'mon go'.
 
+
 ## Buttons and LEDs
-------------------
 
   Buttons
   -------
@@ -658,8 +657,8 @@ REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
   is, apparently, running normally.  If LED is flashing at approximately
   2Hz, then a fatal error has been detected and the system has halted.
 
+
 ## Serial Console
-----------------
 
   DEBUG / DBGU Port (J1).  There is a TTL serial connection available on
   pins 2 and 3 of the DEBUG connector.  This may be driven by UART1,
@@ -723,8 +722,8 @@ REVISIT: Unverified, cloned text from the SAMA5D4-EK README.txt
 REVISIT: UART1 on the DBGU connect might be a better choice for the
 default serial console
 
+
 ## SAMA5D2-XULT Configuration Options
-------------------------------------
 
   CONFIG_ARCH - Identifies the arch/ subdirectory.  This should
   be set to:

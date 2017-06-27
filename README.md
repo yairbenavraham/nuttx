@@ -1,7 +1,6 @@
 ## README
 
   - Environments
-    - Installing Cygwin
   - Installation
     - Download and Unpack
     - Semi-Optional apps/ Package
@@ -27,11 +26,6 @@
     - Building
     - Re-building
     - Build Targets and Options
-    - Native Windows Build
-    - Installing GNUWin32
-  - Cygwin Build Problems
-    - Strange Path Problems
-    - Window Native Toolchain Issues
   - Documentation
 
 ## ENVIRONMENTS
@@ -40,16 +34,14 @@
   Linux or OSX. 
 
 
-INSTALLATION
-------------
+## INSTALLATION
 
   There are two ways to get NuttX:  You may download released, stable
   tarballs from wither the Bitbucket or Sourceforge download locations.
   Or you may get NuttX by cloning the Bitbucket GIT repositories.  Let's
   consider the released tarballs first:
 
-Download and Unpack
--------------------
+# Download and Unpack
 
   Download and unpack the NuttX tarball.  If you are reading this, then
   you have probably already done that.  After unpacking, you will end
@@ -63,8 +55,7 @@ Download and Unpack
     https://bitbucket.org/nuttx/nuttx/downloads
     https://sourceforge.net/projects/nuttx/files/nuttx/
 
-Semi-Optional apps/ Package
----------------------------
+# Semi-Optional apps/ Package
 
   All NuttX libraries and example code used to be in included within
   the NuttX source tree.  As of NuttX-6.0, this application code was
@@ -101,25 +92,13 @@ Semi-Optional apps/ Package
   can be changed by modifying your NuttX configuration file, but that
   is another story.
 
-Installation Directories with Spaces in the Path
-------------------------------------------------
+# Installation Directories with Spaces in the Path
 
+  In short: DON'T use spaces in path!
   The nuttx build directory should reside in a path that contains no
-  spaces in any higher level directory name.  For example, under
-  Cygwin, your home directory might be formed from your first and last
-  names like: "/home/First Last". That will cause strange errors when
-  the make system tries to build.
+  spaces in any higher level directory name. 
 
-  [Actually, that problem is probably not to difficult to fix.  Some
-   Makefiles probably just need some paths within double quotes]
-
-  I work around spaces in the home directory name, by creating a
-  new directory that does not contain any spaces, such as /home/nuttx.
-  Then I install NuttX in /home/nuttx and always build from
-  /home/nuttx/nuttx-code.
-
-Downloading from Repositories
------------------------------
+# Downloading from Repositories
 
   Cloning the Repository
 
@@ -169,8 +148,7 @@ Downloading from Repositories
 
       git config --global core.autocrlf false
 
-Related Repositories
---------------------
+# Related Repositories
 
   These are standalone repositories:
 
@@ -210,8 +188,7 @@ Related Repositories
     Yes, this really is a Pascal compiler.  The Pascal p-code run-time and
     pcode debugger can be built as a part of NuttX.
 
-Notes about Header Files
-------------------------
+# Notes about Header Files
 
   Other C-Library Header Files.
 
@@ -314,11 +291,10 @@ Notes about Header Files
     See the discussion above for the math.h header.  This setting works
     exactly the same for the stdarg.h header file.
 
-CONFIGURING NUTTX
------------------
 
-Instantiating "Canned" Configurations
--------------------------------------
+## CONFIGURING NUTTX
+
+# Instantiating "Canned" Configurations
 
   "Canned" NuttX configuration files are retained in:
 
@@ -372,8 +348,7 @@ Instantiating "Canned" Configurations
 
     See tools/README.txt for more information about these scripts.
 
-Refreshing Configurations
--------------------------
+# Refreshing Configurations
 
   Configurations can get out of date.  As new configuration settings are
   added or removed or as dependencies between configuration settings
@@ -410,8 +385,7 @@ Refreshing Configurations
   the current Kconfig files, setting any new options to the default value.
   No questions asked.
 
-NuttX Configuration Tool
-------------------------
+# NuttX Configuration Tool
 
   An automated tool has been incorported to support re-configuration
   of NuttX.  This automated tool is based on the kconfig-frontends
@@ -504,8 +478,7 @@ NuttX Configuration Tool
   These last to shortcuts are described further in the following
   paragraphs.
 
-Finding Selections in the Configuration Menus
----------------------------------------------
+# Finding Selections in the Configuration Menus
 
   The NuttX configuration options have gotten complex and it can be very
   difficult to find options in the menu trees if you are not sure where
@@ -520,8 +493,7 @@ Finding Selections in the Configuration Menus
   It will show you not only where to find the configuration item, but
   also all of the dependencies related to the configuration item.
 
-Reveal Hidden Configuration Options
------------------------------------
+# Reveal Hidden Configuration Options
 
   If you type 'Z', then kconfig-mconf will change what is displayed.
   Normally, only enabled features that have all of their dependencies met
@@ -537,8 +509,7 @@ Reveal Hidden Configuration Options
   cannot be selected and has no value).  About all you do is to select
   the <Help> option to see what the dependencies are.
 
-Make Sure that You on on the Right Platform
--------------------------------------------
+# Make Sure that You on on the Right Platform
 
   Saved configurations may run on Linux, Cygwin (32- or 64-bit), or other
   platforms.  The platform characteristics can be changed use 'make
@@ -569,9 +540,8 @@ Make Sure that You on on the Right Platform
 
     $ tools/sethost.sh -h
 
-Comparing Two Configurations
-----------------------------
-
+# Comparing Two Configurations
+  
   If you try to compare to configurations using 'diff', you will probably
   not be happy with the result.  There are superfluous things added to
   the configuration files that makes comparisons with the human eye
@@ -610,8 +580,7 @@ Comparing Two Configurations
      manual configurations to the current configurations based on the
      kconfig-frontends tools.  See the following paragraph.
 
-Incompatibilities with Older Configurations
--------------------------------------------
+# Incompatibilities with Older Configurations
 
   ***** WARNING *****
 
@@ -656,8 +625,7 @@ Incompatibilities with Older Configurations
   damage your configuration (see
   http://www.nuttx.org/doku.php?id=wiki:howtos:convertconfig).
 
-NuttX Configuration Tool under DOS
-----------------------------------
+# NuttX Configuration Tool under DOS
 
   Recent versions of NuttX support building NuttX from a native Windows
   console window (see "Native Windows Build" below).  But kconfig-frontends
@@ -705,11 +673,10 @@ NuttX Configuration Tool under DOS
           -   option env="APPSDIR"
           +   default "../apps"
 
-TOOLCHAINS
-----------
 
-Cross-Development Toolchains
-----------------------------
+## TOOLCHAINS
+
+# Cross-Development Toolchains
 
   In order to build NuttX for your board, you will have to obtain a cross-
   compiler to generate code for your target CPU.  For each board,
@@ -720,8 +687,7 @@ Cross-Development Toolchains
   In any case, the PATH environment variable will need to be updated to
   include the loction where the build can find the toolchain binaries.
 
-NuttX Buildroot Toolchain
--------------------------
+# NuttX Buildroot Toolchain
 
   For many configurations, a DIY set of tools is available for NuttX.  These
   tools can be downloaded from the NuttX Bitbucket.org file repository.  After
@@ -758,8 +724,7 @@ NuttX Buildroot Toolchain
 
     make CROSSDEV=arm-nuttx-elf
 
-SHELLS
-------
+# SHELLS
 
   The NuttX build relies on some shell scripts.  Some are inline in the
   Makefiles and many are executable scripts in the tools/. directory.  The
@@ -788,11 +753,10 @@ SHELLS
      There may still be issues, however, with certain the bash-centric scripts
      that will require modifications.
 
-BUILDING NUTTX
---------------
 
-Building
---------
+## BUILDING NUTTX
+
+# Building
 
   NuttX builds in-place in the source tree.  You do not need to create
   any special build directories.  Assuming that your Make.defs is setup
@@ -807,8 +771,7 @@ Building
   arguments on the make command.  Read ${TOPDIR}/configs/<board-name>/README.txt
   to see if that applies to your target.
 
-Re-building
------------
+# Re-building
 
   Re-building is normally simple -- just type make again.
 
@@ -846,8 +809,7 @@ Re-building
   will be re-created when you do a normal 'make' and your edits will then be
   effective.
 
-Build Targets and Options
--------------------------
+# Build Targets and Options
 
   Build Targets:
   Below is a summary of the build targets available in the top-level
@@ -934,256 +896,8 @@ Build Targets and Options
     useful when adding new boards or tracking down compile time errors and
     warnings (Contributed by Richard Cochran).
 
-Native Windows Build
---------------------
 
-  The beginnings of a Windows native build are in place but still not often
-  used as of this writing.  The build was functional but because of lack of
-  use may find some issues to be resolved with this build configuration.
-
-  The windows native build logic initiated if CONFIG_WINDOWS_NATIVE=y is
-  defined in the NuttX configuration file:
-
-
-  This build:
-
-    - Uses all Windows style paths
-    - Uses primarily Windows batch commands from cmd.exe, with
-    - A few extensions from GNUWin32
-
-  In this build, you cannot use a Cygwin or MSYS shell. Rather the build must
-  be performed in a Windows console window. Here is a better terminal than the
-  standard issue, CMD.exe terminal:  ConEmu which can be downloaded from:
-  https://sourceforge.net/projects/conemu/ or https://conemu.github.io/ .
-
-  Build Tools.  The build still relies on some Unix-like commands.  I use
-  the GNUWin32 tools that can be downloaded from http://gnuwin32.sourceforge.net/
-  using the 'Download all' selection.  Individual packages can be download
-  instead if you know what you are doing and want a faster download (No, I
-  can't tell you which packages you should or should not download).
-
-  Host Compiler:  I use the MingGW GCC compiler which can be downloaded from
-  http://www.mingw.org/.  If you are using GNUWin32, then it is recommended
-  the you not install the optional MSYS components as there may be conflicts.
-
-  This capability should still be considered a work in progress because:
-
-    (1) It has not been verified on all targets and tools, and
-    (2) it still lacks some of the creature-comforts of the more mature
-        environments.
-
-Installing GNUWin32
--------------------
-
-  The Windows native build will depend upon a few Unix-like tools that can be
-  provided either by MSYS or GNUWin32.  The GNUWin32 are available from
-  http://gnuwin32.sourceforge.net/.  GNUWin32 provides ports of tools with a
-  GPL or similar open source license to modern MS-Windows (Microsoft Windows
-  2000 / XP / 2003 / Vista / 2008 / 7).  See
-  http://gnuwin32.sourceforge.net/packages.html for a list of all of the tools
-  available in the GNUWin32 package.
-
-  The SourceForge project is located here:
-  http://sourceforge.net/projects/gnuwin32/.  The project is still being
-  actively supported (although some of the Windows ports have gotten very old).
-
-  Some commercial toolchains include a subset of the GNUWin32 tools in the
-  installation.  My recommendation is that you download the GNUWin32 tools
-  directly from the sourceforge.net website so that you will know what you are
-  using and can reproduce your build environment.
-
-  GNUWin32 Installation Steps:
-
-  The following steps will download and execute the GNUWin32 installer.
-
-  1. Download GetGNUWin32-x.x.x.exe from
-     http://sourceforge.net/projects/getgnuwin32/files/.  This is the
-     installer.  The current version as of this writing is 0.6.3.
-
-  2. Run the installer.
-
-  3. Accept the license.
-
-  4. Select the installation directory.  My recommendation is the
-     directory that contains this README file (<this-directory>).
-
-  5. After running GetGNUWin32-0.x.x.exe, you will have a new directory
-     <this-directory>/GetGNUWin32
-
-  Note that the GNUWin32 installer didn't install GNUWin32.  Instead, it
-  installed another, smarter downloader.  That downloader is the GNUWin32
-  package management tool developed by the Open SSL project.
-
-  The following steps probably should be performed from inside a DOS shell.
-
-  6. Change to the directory created by GetGNUWin32-x.x.x.exe
-
-    cd GetGNUWin32
-
-  7. Execute the download.bat script.  The download.bat script will download
-     about 446 packages!  Enough to have a very complete Linux-like environment
-     under the DOS shell.  This will take awhile.  This step only downloads
-     the packages and the next step will install the packages.
-
-     download
-
-  8. This step will install the downloaded packages.  The argument of the
-     install.bat script is the installation location.  C:\gnuwin32 is the
-     standard install location:
-
-     install C:\gnuwin32
-
-  NOTE:  This installation step will install *all* GNUWin32 packages... far
-  more than you will ever need.  If disc space is a problem for you, you might
-  need to perform a manual installation of the individual ZIP files that you
-  will find in the <this directory>/GetGNUWin32/packages directory.
-
-CYGWIN BUILD PROBLEMS
-^^^^^^^^^^^^^^^^^^^^^
-
-Strange Path Problems
----------------------
-
-  If you see strange behavior when building under Cygwin then you may have
-  a problem with your PATH variable.  For example, if you see failures to
-  locate files that are clearly present, that may mean that you are using
-  the wrong version of a tool.  For example, you may not be using Cygwin's
-  'make' program at /usr/bin/make.  Try:
-
-    $ which make
-    /usr/bin/make
-
-  When you install some toolchains (such as Yargarto or CodeSourcery tools),
-  they may modify your PATH variable to include a path to their binaries.
-  At that location, they make have GNUWin32 versions of the tools.  So you
-  might actually be using a version of make that does not understand Cygwin
-  paths.
-
-  The solution is either:
-
-  1. Edit your PATH to remove the path to the GNUWin32 tools, or
-  2. Put /usr/local/bin, /usr/bin, and /bin at the front of your path:
-
-     $ export PATH=/usr/local/bin:/usr/bin:/bin:$PATH
-
-Window Native Toolchain Issues
-------------------------------
-
-  There are many popular Windows native toolchains that may be used with NuttX.
-  Examples include CodeSourcery (for Windows), devkitARM, and several vendor-
-  provied toolchains.  There are several limitations with using a and Windows
-  based toolchain in a Cygwin environment.  The three biggest are:
-
-  1. The Windows toolchain cannot follow Cygwin paths.  Path conversions are
-     performed automatically in the Cygwin makefiles using the 'cygpath' utility
-     but you might easily find some new path problems.  If so, check out 'cygpath -w'
-
-  2. Windows toolchains cannot follow Cygwin symbolic links.  Many symbolic links
-     are used in Nuttx (e.g., include/arch).  The make system works around these
-     problems for the Windows tools by copying directories instead of linking them.
-     But this can also cause some confusion for you:  For example, you may edit
-     a file in a "linked" directory and find that your changes had no effect.
-     That is because you are building the copy of the file in the "fake" symbolic
-     directory.  If you use a Windows toolchain, you should get in the habit of
-     making like this:
-
-       make clean_context all
-
-     An alias in your .bashrc file might make that less painful.  The rebuild
-     is not a long as you might think because there is no dependency checking
-     if you are using a native Windows toolchain.  That bring us to #3:
-
-General Pre-built Toolchain Issues
-
-  To continue with the list of "Window Native Toolchain Issues" we can add
-  the following.  These, however, are really just issues that you will have
-  if you use any pre-built toolchain (vs. building the NuttX toolchain from
-  the NuttX buildroot package):
-
-  There may be incompatibilities with header files, libraries, and compiler
-  built-in functions at detailed below.  For the most part, these issues
-  are handled in the existing make logic.  But if you are breaking new ground,
-  then you may encounter these:
-
-  4. Header Files.  Most pre-built toolchains will build with a foreign C
-     library (usually newlib, but maybe uClibc or glibc if you are using a
-     Linux toolchain).  This means that the header files from the foreign
-     C library will be built into the toolchain.  So if you "include <stdio.h>",
-     you will get the stdio.h from the incompatible, foreign C library and
-     not the nuttx stdio.h (at nuttx/include/stdio.h) that you wanted.
-
-     This can cause really confusion in the builds and you must always be
-     sure the -nostdinc is included in the CFLAGS.  That will assure that
-     you take the include files only from
-
-  5. Libraries.  What was said above header files applies to libraries.
-     You do not want to include code from the libraries of any foreign
-     C libraries built into your toolchain.  If this happens you will get
-     perplexing errors about undefined symbols.  To avoid these errors,
-     you will need to add -nostdlib to your CFLAGS flags to assure that
-     you only take code from the NuttX libraries.
-
-     This, however, may causes other issues for libraries in the toolchain
-     that you do want (like libgcc.a or libm.a).  These are special-cased
-     in most Makefiles, but you could still run into issues of missing
-     libraries.
-
-  6. Built-Ins.  Some compilers target a particular operating system.
-     Many people would, for example, like to use the same toolchain to
-     develop Linux and NuttX software.  Compilers built for other
-     operating systems may generate incompatible built-in logic and,
-     for this reason, -fno-builtin should also be included in your
-     C flags
-
-  And finally you may not be able to use NXFLAT.
-
-  7. NXFLAT. If you use a pre-built toolchain, you will lose all support
-     for NXFLAT.  NXFLAT is a binary format described in
-     Documentation/NuttXNxFlat.html.  It may be possible to build
-     standalone versions of the NXFLAT tools; there are a few examples
-     of this in the buildroot repository at https://bitbucket.org/nuttx/buildroot
-     However, it is possible that there could be interoperability issues
-     with your toolchain since they will be using different versions of
-     binutils and possibly different ABIs.
-
-Building Original Linux Boards in Cygwin
-
-  Some default board configurations are set to build under Linux and others
-  to build under Windows with Cygwin.  Various default toolchains may also
-  be used in each configuration.  It is possible to change the default
-  setup.  Here, for example, is what you must do in order to compile a
-  default Linux configuration in the Cygwin environment using the
-  CodeSourceery for Windows toolchain.  After instantiating a "canned"
-  NuttX configuration, run the target 'menuconfig' and set the following
-  items:
-
-    Build Setup->Build Host Platform->Windows
-    Build Setup->Windows Build Environment->Cygwin
-    System Type->Toolchain Selection->CodeSourcery GNU Toolchain under Windows
-
-  In Windows 7 it may be required to open the Cygwin shell as Administrator
-  ("Run As" option, right button) you find errors like "Permission denied".
-
-Recovering from Bad Configurations
-
-  Many people make the mistake of configuring NuttX with the "canned"
-  configuration and then just typing 'make' with disastrous consequences;
-  the build may fail with mysterious, uninterpretable, and irrecoverable
-  build errors.  If, for example, you do this with an unmodified Linux
-  configuration in a Windows/Cgwin environment, you will corrupt the
-  build environment.  The environment will be corrupted because of POSIX vs
-  Windows path issues and with issues related to symbolic links.  If you
-  make the mistake of doing this, the easiest way to recover is to just
-  start over: Do 'make distclean' to remove every trace of the corrupted
-  configuration, reconfigure from scratch, and make certain that the set
-  the configuration correctly for your platform before attempting to make
-  again.
-
-  Just fixing the configuration file after you have instantiated the bad
-  configuration with 'make' is not enough.
-
-DOCUMENTATION
--------------
+## DOCUMENTATION
 
 Additional information can be found in the Documentation/ directory and
 also in README files that are scattered throughout the source tree.  The
